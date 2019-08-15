@@ -1,10 +1,13 @@
 # 信号量，semaphore。
 
 信号量的结构可以简单朴素地看成一个结构体：
-`struct semaphore {
+
+```c
+struct semaphore {
     int count;
     queue blockQueue;
-}`
+}
+```
 
 ## 对一个信号量有且仅有三种方式可以操作：
 1. 初始化
@@ -30,14 +33,16 @@
 ## 一个例子：
 有一些进程，每一个都需要进入临界区域，可以使用信号量解决。
 
-`semaphore s = 1;
+```c
+semaphore s = 1;
 function aFunction() {
     while (true) {
         semWait(s);
         // 临界区操作
         semSignal(s);
     }
-}`
+}
+```
 
 ## 提出问题：
 ### 为什么首先执行了semWait(s)？
