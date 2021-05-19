@@ -57,6 +57,8 @@ var components: [Component<State, Prop>]
 
 The reason for this is that when a protocol becomes a protocol with some generic types, the compiler cannot deduce exactly what type it is without a clue, so it has to give an error.
 
+> Strictly speaking, protocols cannot be used as a concrete type in Swift, they can only be used to constrain generic parameters. When we use a protocol as a concrete type, the compiler creates a wrapper type for the protocol, called existential, and in Swift 5, existential is only for protocols that do not have associated types and Self constraints.
+
 ## How to implement type erasure for custom types
 
 The `Foundation` framework provides some type erasure types to help solving the problem we encountered above, such as `AnyHashable`, `AnySequence`, etc. These types hide the type that adheres to the corresponding protocol so that it can be declared using that type.
